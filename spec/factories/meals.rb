@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :meal do
-    name "Lamb"
+    name Faker::Food.dish
     restaurant
   end
 end
