@@ -19,4 +19,12 @@ RSpec.describe Restaurant, type: :model do
       expect(@restaurant.name).to_not eql "fdsafdsa"
     end
   end
+  
+  context "is destroyed" do
+    it "destroys dependent meals" do
+      @restaurant = create(:restaurant)
+      @meal = create(:meal, restaurant: @restaurant)
+      expect { @restaurant.destroy }.to change { Meal.count }.by(-1)
+    end
+  end
 end
