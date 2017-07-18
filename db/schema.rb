@@ -10,27 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716022253) do
+ActiveRecord::Schema.define(version: 20170718021757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "date_restaurant_zones", force: :cascade do |t|
-    t.bigint "delivery_date_id"
-    t.bigint "restaurant_id"
-    t.bigint "delivery_zone_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["delivery_date_id"], name: "index_date_restaurant_zones_on_delivery_date_id"
-    t.index ["delivery_zone_id"], name: "index_date_restaurant_zones_on_delivery_zone_id"
-    t.index ["restaurant_id"], name: "index_date_restaurant_zones_on_restaurant_id"
-  end
-
-  create_table "delivery_dates", force: :cascade do |t|
-    t.date "delivery_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "delivery_zones", force: :cascade do |t|
     t.string "name"
@@ -41,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170716022253) do
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
+    t.date "delivery_date"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,8 +33,10 @@ ActiveRecord::Schema.define(version: 20170716022253) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
+    t.bigint "delivery_zone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["delivery_zone_id"], name: "index_restaurants_on_delivery_zone_id"
   end
 
 end

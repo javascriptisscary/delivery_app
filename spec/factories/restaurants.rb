@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :restaurant do
-    name "Example Restaurant"
+    sequence(:name) { |n| "Restaurant #{n}" }
+    delivery_zone
   end
 end

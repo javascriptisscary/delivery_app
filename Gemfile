@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.2'
 
 gem 'rails_admin', '~> 1.2'
 gem 'validates_timeliness', '~> 4.0'
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'pg'
 # Use Puma as the app server
@@ -46,6 +47,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'shoulda'
+  gem 'faker'
+  gem 'pry'
 end
 
 group :development do
@@ -55,7 +58,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pry'
+  gem 'awesome_print'
 end
 
 group :test do

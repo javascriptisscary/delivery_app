@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe Restaurant, type: :model do
   context "associations" do
     it { should have_many(:meals) }
-    it { should have_many(:delivery_zones) }
-    it { should have_many(:delivery_dates) }
-    it { should have_many(:date_restaurant_zones) }
+    it { should belong_to(:delivery_zone) }
   end
   
   context "validations" do
@@ -16,7 +14,7 @@ RSpec.describe Restaurant, type: :model do
   
   context "standard factory build" do
     it "is valid and has a name" do
-      @restaurant = build(:restaurant)
+      @restaurant = create(:restaurant)
       expect(@restaurant).to be_valid
       expect(@restaurant.name).to_not eql "fdsafdsa"
     end

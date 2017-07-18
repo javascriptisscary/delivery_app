@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe DeliveryZone, type: :model do
   context "associations" do
-    it {should have_many(:restaurants) }
-    it {should have_many(:delivery_dates) }
-    it {should have_many(:date_restaurant_zones) }
+    it { should have_many(:restaurants) }
+    it { should have_many(:meals) }
   end
   
   context "validations" do
@@ -18,7 +17,7 @@ RSpec.describe DeliveryZone, type: :model do
       @zone = build(:delivery_zone)
       expect(@zone).to be_valid
       expect(@zone.name).to_not eql "fdsafsd"
-      expect(@zone.name).to eql "Example Zone"
+      expect(@zone.name).to eql "Example Zone 1"
     end
   end
 end
