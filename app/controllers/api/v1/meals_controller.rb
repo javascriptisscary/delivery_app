@@ -1,6 +1,8 @@
-class Api::V1::MealsController < ActionController::API
+class Api::V1::MealsController < Api::V1::BaseController
+  before_action :require_login, only: [:destroy]
+  
   include DateHelper
- 
+  
   def index
     if params[:day] && params[:zone_id]
       @date = get_date_from_current_week(params[:day]) # Because we are using dates in db, we must match "day" with date in the current week
@@ -21,6 +23,9 @@ class Api::V1::MealsController < ActionController::API
     else
       render json: {status: 400, message: "Can't find meal without id"}, status: 400
     end
+  end
+  
+  def destroy
   end
   
   private

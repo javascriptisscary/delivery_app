@@ -1,5 +1,5 @@
 class Api::V1::MealSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :price
   belongs_to :restaurant
   
   def created_at

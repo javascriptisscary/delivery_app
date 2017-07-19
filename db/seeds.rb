@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 restaurants = [] # arrays for associations
+users =[]
 zones = []
 
 5.times do
@@ -17,9 +18,19 @@ zones = []
 end
   
 10.times do
+   user = User.create!(
+      name: Faker::Name.unique.name,
+      email: Faker::Internet.free_email,
+      password: "password"
+   )
+   users.push(user)
+end
+  
+10.times do |i|
  rest = Restaurant.create!(
     name: Faker::Company.unique.name,
-    delivery_zone: zones.sample
+    delivery_zone: zones.sample,
+    user: users[i]
   )
  restaurants.push(rest)
 end

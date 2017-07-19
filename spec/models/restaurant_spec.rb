@@ -4,6 +4,7 @@ RSpec.describe Restaurant, type: :model do
   context "associations" do
     it { should have_many(:meals) }
     it { should belong_to(:delivery_zone) }
+    it { should belong_to(:user) }
   end
   
   context "validations" do
