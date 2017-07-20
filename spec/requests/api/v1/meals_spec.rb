@@ -51,10 +51,11 @@ describe "Meals API" do
       @meal = create(:meal, restaurant: @restaurant)
       
       post "/api/v1/login",  params: {email: @user.email, password:  @user.password }
-      response.set_header('Content-Type', 'application/vnd.api+json; charset=utf-8')
+      #set_header('Content-Type', 'application/vnd.api+json; charset=utf-8')
       #@request.env['Authorization'] = response_body_as_json['token']
       delete '/api/v1/meals/1'
-      puts response_body_as_json
+      pending("destroy meal test")
+      raise "pending"
       # todo
     end
   end

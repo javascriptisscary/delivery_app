@@ -11,36 +11,44 @@ users =[]
 zones = []
 
 5.times do
- zone = DeliveryZone.create!(
-    name: Faker::GameOfThrones.unique.house
+ zone = Zone.create!(
+   name: Faker::GameOfThrones.unique.house
   )
  zones.push(zone)
 end
   
 10.times do
-   user = User.create!(
-      name: Faker::Name.unique.name,
-      email: Faker::Internet.free_email,
-      password: "password"
-   )
-   users.push(user)
+  user = User.create!(
+    name: Faker::Name.unique.name,
+    email: Faker::Internet.free_email,
+    password: "password"
+  )
+  users.push(user)
 end
   
 10.times do |i|
  rest = Restaurant.create!(
-    name: Faker::Company.unique.name,
-    delivery_zone: zones.sample,
-    user: users[i]
+   name: Faker::Company.unique.name,
+   user: users[i]
   )
  restaurants.push(rest)
 end
 
-100.times do
+50.times do
   Meal.create!(
     name: Faker::Food.dish,
     restaurant: restaurants.sample,
     price: Faker::Number.decimal(2),
-    delivery_date: Faker::Date.between(Date.today, Date.new(2017,12,31))
   )
+end
+
+Date.today.upto(Date.new(2017,12,31)).each do |date|
+  10.times do |i| # create mulitple zones to semi-realistically accommodate multiple restaurants in the join table
+    RestaurantZone.create(
+      zone: zones.sample,
+      restaurant: restaurants.sample, # to do, restaurant cannot have more than one zone per day
+      delivery_date: date
+    )
+  end
 end
     

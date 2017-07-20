@@ -20,4 +20,5 @@ RSpec.describe Meal, type: :model do
       expect(@meal.restaurant.name).to eql @rest.name
     end
   end
+  
 end
