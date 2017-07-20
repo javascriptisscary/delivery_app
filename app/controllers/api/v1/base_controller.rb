@@ -7,7 +7,7 @@ class Api::V1::BaseController < ApplicationController
   end
   
   def current_user
-    @current_user ||= authenticate_token
+    current_user ||= authenticate_token
   end
   
   protected
@@ -25,12 +25,7 @@ class Api::V1::BaseController < ApplicationController
 
   def authenticate_token
     authenticate_with_http_token do |token, options|
-      if @user = User.find_by(token: token)
-        ActiveSupport::SecurityUtils.secure_compare(
-                      ::Digest::SHA256.hexdigest(token),
-                      ::Digest::SHA256.hexdigest(user.token))
-        @user
-      end
+      User.find_by(token: token)
     end
   end
   

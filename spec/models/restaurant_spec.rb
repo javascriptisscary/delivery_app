@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Restaurant, type: :model do
   context "associations" do
     it { should have_many(:meals) }
-    it { should belong_to(:delivery_zone) }
+    #it { should have_many(:zones) }
     it { should belong_to(:user) }
   end
   

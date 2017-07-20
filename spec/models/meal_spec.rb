@@ -13,8 +13,7 @@ RSpec.describe Meal, type: :model do
   
   context "standard factory build" do
     it "is valid" do
-      @zone = create(:delivery_zone)
-      @rest = create(:restaurant, delivery_zone: @zone)
+      @rest = create(:restaurant)
       @meal = create(:meal, restaurant: @rest)
       expect(@meal).to be_valid
       expect(@meal.name).to_not eql "fdsafdsa"

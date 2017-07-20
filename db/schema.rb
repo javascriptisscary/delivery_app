@@ -10,34 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718164409) do
+ActiveRecord::Schema.define(version: 20170719220605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "delivery_zones", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
-    t.date "delivery_date"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
   end
 
+  create_table "restaurant_zones", force: :cascade do |t|
+    t.date "delivery_date"
+    t.bigint "restaurant_id"
+    t.bigint "zone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_zones_on_restaurant_id"
+    t.index ["zone_id"], name: "index_restaurant_zones_on_zone_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.bigint "delivery_zone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["delivery_zone_id"], name: "index_restaurants_on_delivery_zone_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
@@ -47,6 +48,12 @@ ActiveRecord::Schema.define(version: 20170718164409) do
     t.string "email"
     t.string "password_digest"
     t.integer "is_admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "zones", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
