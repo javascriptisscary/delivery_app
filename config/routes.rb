@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  namespace :admin do
+    root to: "admin#index"
+  end
+
+  root 'home#index'
+  
   #api
   namespace :api do
     namespace :v1 do
@@ -7,9 +14,8 @@ Rails.application.routes.draw do
         post "/login",    to: "sessions#create"
         delete "/logout", to: "sessions#destroy"
       #end
-      
+      end
     end
-  end
   
   
 end

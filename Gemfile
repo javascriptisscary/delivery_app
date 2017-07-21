@@ -14,6 +14,10 @@ gem 'validates_timeliness', '~> 4.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jwt'
 gem 'bcrypt'
+gem 'haml-rails', '~> 0.9'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 4.7.0'
 
 
 gem 'pg'
