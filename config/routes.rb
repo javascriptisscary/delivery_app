@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-    root to: "admin#index"
+    root to: "restaurants#index"
   end
 
   root 'home#index'
   
-  #api
+  # login
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
+  # api
   namespace :api do
     namespace :v1 do
       resources :meals, only: [:index, :show, :destroy]

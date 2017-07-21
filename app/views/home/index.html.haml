@@ -2,19 +2,23 @@
   %h1.login-header Admin Login
   .card
     .card-block
-    %form.input-group
-      %span.input-group-addon
-        = icon('envelope-o')
-      %input.form-control{type: "email", required: true, placeholder: "Email"}
-       
-    %form.input-group
-      %span.input-group-addon
-        = icon('lock')
-      %input.form-control{type: "password", required: true, placeholder: "Password"}
-    %form.input-group  
-      %button.btn.btn-primary.login-button{type: "submit"}
-        = icon('sign-in')
-        Login
+      = form_for :session, url: login_path do |f|
+        .input-group
+          %span.input-group-addon
+            = icon('envelope-o')
+          = f.text_field :email, class: "form-control email", type: "email", required: true, placeholder: "Email"
+        .input-group
+          %span.input-group-addon
+            = icon('lock')
+          = f.password_field :password, class: "form-control password", type: "password", required: true, placeholder: "Password"
+        .input-group  
+          = f.button fa_icon("sign-in", text: "Login"), class: "btn btn-primary login-button", type: "submit"
+    =if flash[:alert]
+      .alert-danger
+        = flash[:alert]
+        = puts flash[:alert]
+  
+            
       
       
       
