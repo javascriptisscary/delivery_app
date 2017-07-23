@@ -17,7 +17,13 @@
 @import "font-awesome";
 @import url(https://fonts.googleapis.com/css?family=Exo);
 @import "home";
+@import 'admin';
 
 body {
-  background: url(image_path('blue_background.jpg')) no-repeat;   
+  background: url(image_path('blue_background.jpg')) no-repeat;
+  color: white;
+}
+
+h1, h2, h3 {
+  font-family: 'Exo';
 }

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:alert] = "Username or Password is incorrect"
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     end
   end
   

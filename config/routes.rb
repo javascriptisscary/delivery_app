@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-    root to: "restaurants#index"
+    root to: "restaurant_zones#index"
+    get "/restaurant_zones/date/", to: "restaurant_zones#by_date"
   end
 
   root 'home#index'

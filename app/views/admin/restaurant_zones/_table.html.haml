@@ -1,0 +1,21 @@
+%table.table.table-striped.table-hover.table-responsive.restaurant-zone_table
+  %thead.thead-inverse
+    %tr
+      %th #
+      %th Date
+      %th Restaurant
+      %th Zone
+  %tbody
+    - restaurant_zones.each do |rz|
+      %tr
+        %td
+          = rz.id
+        %td
+          = rz.delivery_date
+        %td
+          = rz.restaurant.name
+        %td
+          = rz.zone.name
+   
+    
+  

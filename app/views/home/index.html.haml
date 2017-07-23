@@ -13,10 +13,9 @@
           = f.password_field :password, class: "form-control password", type: "password", required: true, placeholder: "Password"
         .input-group  
           = f.button fa_icon("sign-in", text: "Login"), class: "btn btn-primary login-button", type: "submit"
-    =if flash[:alert]
+    - if flash[:alert]
       .alert-danger
         = flash[:alert]
-        = puts flash[:alert]
   
             
       
