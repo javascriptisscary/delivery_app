@@ -1,40 +1,17 @@
-%table.table.table-striped.table-hover.table-responsive.restaurant-zone_table
-  %thead.thead-inverse
-    %tr
-      %th id
-      %th Date
-      %th Restaurant
-      %th Zone
-      %th
-  %tbody
-    - restaurant_zones.each do |rz|
+= form_for :restaurant_zone, url: admin_restaurant_zones_path, remote: true, method: :post do |f|
+  -# form outside of the table, as it can't be inside due to html restrictions
+  %table.table.table-striped.table-hover.table-responsive.restaurant-zone_table
+    %thead.thead-inverse
       %tr
-        %td
-          = rz.id
-        %td
-          = rz.delivery_date
-        %td
-          = rz.restaurant.name
-        %td
-          = rz.zone.name
-        %td
-          = link_to icon('trash-o'), admin_restaurant_zone_path(id: rz.id, date: date), method: :delete, remote: true, data: { confirm: 'Are you sure?' }
-    %tr
-      %td
-      %td
-        = date
-      %td
-        %select.custom-select
-          - restaurants.each do |restaurant|
-            %option{value: restaurant.id}
-              = restaurant.name
-      %td  
-        %select.custom-select
-          - zones.each do |zone|
-            %option{value: zone.id}
-              = zone.name
-      %td
-        = link_to icon('plus-circle')
+        %th id
+        %th Date
+        %th Restaurant
+        %th Zone
+        %th
+    %tbody
+      = render partial:"restaurant_zones", locals: { restaurant_zones: restaurant_zones, date: date }
+      = render partial: "new_restaurant_zone", locals: { restaurants: restaurants, zones: zones, date: date, f: f }
+    
 - if flash[:alert]
   .alert-danger.text-center
     = flash[:alert]

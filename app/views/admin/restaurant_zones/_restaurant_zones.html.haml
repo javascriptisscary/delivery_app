@@ -1,0 +1,12 @@
+-restaurant_zones.each do |rz|
+  %tr
+    %td
+      = rz.id
+    %td
+      = rz.delivery_date
+    %td
+      = rz.restaurant.name
+    %td
+      = rz.zone.name
+    %td
+      = link_to icon('trash-o'), admin_restaurant_zone_path(id: rz.id, date: rz.delivery_date), method: :delete, remote: true, data: { confirm: 'Are you sure?' }

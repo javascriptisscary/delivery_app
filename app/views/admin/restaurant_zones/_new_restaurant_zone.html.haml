@@ -1,0 +1,11 @@
+%tr
+  %td
+  %td
+    = f.date_field :delivery_date, class: "form-control", value: date, disabled: true
+  %td
+    = f.collection_select(:restaurant_id, Restaurant.all, :id, :name, {prompt: 'Select'}, {class: "custom-select"})
+      
+  %td  
+    = f.collection_select(:zone_id, Zone.all, :id, :name, {prompt: 'Select'}, {class: "custom-select"})
+  %td
+    = f.button fa_icon('plus'), class: "btn btn-outline-primary btn-sm"

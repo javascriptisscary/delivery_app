@@ -6,6 +6,5 @@
     .dropdown-menu{ aria: { labelledby: "dropdownMenuDates"} }
       - Date.today.upto(Date.today+14).each do |date|
         .dropdown-item
-          = link_to date.strftime('%a %d %b %Y'), admin_restaurant_zones_date_path(date: date), remote: true 
-  %br
+          = link_to date.strftime('%a %d %b %Y'), admin_restaurant_zones_date_path(delivery_date: date), remote: true 
   #insert-table

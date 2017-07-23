@@ -1,0 +1,9 @@
+%nav.navbar.navbar-inverse.bg-inverse
+  .container
+    %a.navbar-brand{href: "#"}
+      = icon('truck')
+    %ul.navbar-nav.mr-auto
+      -if current_user
+        = link_to(content_tag(:i, "Logout", class: "fa fa-sign-out", id: "logout"), logout_path, method: :delete)
+      -#%li.nav-item
+        %a.nav-link{href: "#"} Home
