@@ -1,7 +1,7 @@
 .container
   %h1 Admin Dash
   .dropdown
-    %button.btn.btn-secondary.dropdown{ id: "dropdownMenuDates", type: "button", aria: { haspopup: "true", expanded: "false"}, data: {toggle: "dropdown"}}
+    %button.btn.btn-success.dropdown{ id: "dropdownMenuDates", type: "button", aria: { haspopup: "true", expanded: "false"}, data: {toggle: "dropdown"}}
       Dates
     .dropdown-menu{ aria: { labelledby: "dropdownMenuDates"} }
       - Date.today.upto(Date.today+14).each do |date|
