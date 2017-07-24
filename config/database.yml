@@ -40,5 +40,5 @@ production:
   encoding: unicode
   database: delivery_production
   pool:     5
-  username: 
-  password:
+  username: delivery_prod
+  password: <%= ENV['DELIVERYAPP_DATABASE_PASSWORD'] %>
