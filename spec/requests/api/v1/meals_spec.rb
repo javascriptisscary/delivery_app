@@ -20,14 +20,15 @@ describe "Meals API" do
       @zone = create(:zone)
       @rest = create(:restaurant)
       @rest2 = create(:restaurant)
-      create(:restaurant_zone, restaurant: @rest, zone:@zone, delivery_date: Date.today)
-      create(:restaurant_zone, restaurant: @rest2, zone:@zone, delivery_date: Date.today)
+      create(:restaurant_zone, restaurant: @rest, zone:@zone, delivery_date: Date.tomorrow)
       create(:restaurant_zone, restaurant: @rest2, zone:@zone, delivery_date: Date.tomorrow)
+      create(:restaurant_zone, restaurant: @rest2, zone:@zone, delivery_date: Date.tomorrow+3)
       @meal = create(:meal, name: "Tom Yum", restaurant: @rest)
       @meal2 = create(:meal, name: "Chicken", restaurant: @rest2)
       
-      get "/api/v1/meals/?zone_id=#{@zone.id}&day=#{Date.today.strftime('%A')}"
+      get "/api/v1/meals/?zone_id=#{@zone.id}&day=#{Date.tomorrow.strftime('%A')}"
       
+      puts response_body_as_json
       expect(response.content_type).to eq("application/json") 
       expect(response_body_as_json.length).to eql(2) #only returns 2 meals, as the 3rd meal is on a different day
       expect(response_body_as_json[0].dig('name')).to eql(@meal.name)

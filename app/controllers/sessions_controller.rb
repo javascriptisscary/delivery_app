@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       if @user.is_admin?
         session[:user_id] = @user.id
-        flash[:notice] = "Successfully Logged in."
         redirect_to admin_root_path
       else
         flash[:alert] = "You are not an admin. Nice Try."

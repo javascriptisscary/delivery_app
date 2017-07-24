@@ -17,7 +17,7 @@ RSpec.describe Zone, type: :model do
       @zone = build(:zone)
       expect(@zone).to be_valid
       expect(@zone.name).to_not eql "fdsafsd"
-      expect(@zone.name).to eql "Example Zone 1"
+      expect(@zone.name).to eql @zone.name
     end
   end
 end

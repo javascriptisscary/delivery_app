@@ -1,5 +1,5 @@
 class Admin::RestaurantZonesController < ApplicationController
-
+  before_action :require_admin
 
   def index
   
@@ -7,10 +7,12 @@ class Admin::RestaurantZonesController < ApplicationController
  
   def create
     @restaurant_zone = RestaurantZone.new(restaurant_zone_params)
-    @restaurant_zone.save
-    flash[:notice] = "New restaurant zone created with a restaurant #{@restaurant_zone.restaurant.name},
+    if @restaurant_zone.save
+      flash[:notice] = "New restaurant zone created with a restaurant #{@restaurant_zone.restaurant.name},
                       zone #{@restaurant_zone.zone.name}, and date of #{@restaurant_zone.delivery_date}" 
-    
+    else
+      flash[:alert] = @restaurant_zone.errors.full_messages.to_sentence
+    end
     get_restaurant_zones_for_partial(@restaurant_zone.delivery_date)
     respond_to do |format|
         format.js {render "by_date"}
