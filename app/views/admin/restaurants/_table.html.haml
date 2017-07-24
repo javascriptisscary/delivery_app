@@ -1,8 +1,10 @@
 %table.table.table-striped.table-hover.table-responsive.restaurants_table
   %thead.thead-inverse
     %tr
-      %th{colspan: 3}
-        =restaurant.name
+      %th{colspan: 2}
+        = restaurant.name
+      %th
+        = "Owner name: #{restaurant.user.name}, Owner id: #{restaurant.user.id}"
     %tr
       %th id
       %th Name
