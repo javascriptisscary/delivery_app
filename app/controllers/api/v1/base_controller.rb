@@ -1,6 +1,6 @@
 class Api::V1::BaseController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  protect_from_forgery :null_session
+  protect_from_forgery unless: -> { request.format.json? }
   
   def require_login
     authenticate_token || render_unauthorized("Access denied")
