@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :restaurant_zones, only: [:index, :create, :destroy]
+    resources :restaurants, only: [:index, :show]
     root to: "restaurant_zones#index"
     get "/restaurant_zones/date/", to: "restaurant_zones#by_date"
     

@@ -9,7 +9,6 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 
-gem 'rails_admin', '~> 1.2'
 gem 'validates_timeliness', '~> 4.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jwt'

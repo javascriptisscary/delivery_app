@@ -5,7 +5,7 @@
     %td
       = rz.delivery_date
     %td
-      = rz.restaurant.name
+      = link_to rz.restaurant.name, admin_restaurant_path(rz.restaurant.id), remote: true
     %td
       = rz.zone.name
     %td

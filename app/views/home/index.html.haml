@@ -11,12 +11,11 @@
           %span.input-group-addon
             = icon('lock')
           = f.password_field :password, class: "form-control password", type: "password", required: true, placeholder: "Password"
-        .input-group  
-          = f.button fa_icon("sign-in", text: "Login"), class: "btn btn-primary login-button", type: "submit"
-    - if flash[:alert]
-      .alert-danger
-        = flash[:alert]
-  
+        .input-group
+          = f.button class: 'btn btn-primary login-button', type: "submit" do
+            Login
+            = icon("sign-in")
+    = flash_messages()
             
       
       

@@ -1,0 +1,3 @@
+var div = document.getElementById('insert-table');
+
+div.innerHTML ="<%= escape_javascript(render partial: 'table', locals: { restaurant: @restaurant, meals: @restaurant.meals } ) %>"

@@ -11,13 +11,7 @@
     %tbody
       = render partial:"restaurant_zones", locals: { restaurant_zones: restaurant_zones, date: date }
       = render partial: "new_restaurant_zone", locals: { restaurants: restaurants, zones: zones, date: date, f: f }
-    
-- if flash[:alert]
-  .alert-danger.text-center
-    = flash[:alert]
-- if flash[:notice]
-  .alert-success.text-center
-    = flash[:notice]
+= flash_messages()    
           
    
     
