@@ -1,2 +1,7 @@
-$("alert-danger").hide("slow", function(){ $(this).remove(); });
-$("alert-success").hide("slow", function(){ $(this).remove(); });
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+
+console.log('fml2');

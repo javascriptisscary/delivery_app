@@ -1,3 +1,12 @@
 var div = document.getElementById('insert-table');
 
 div.innerHTML ="<%= escape_javascript(render partial: 'table', locals: { restaurant_zones: @restaurant_zones, date: @date, restaurants: @restaurants, zones: @zones } ) %>"
+
+//remove flash message
+$(".alert-danger").delay(7000).slideUp(1000, function(){
+      $(".alert-danger").alert('close');
+  });
+
+$(".alert-success").delay(7000).slideUp(1000, function(){
+      $(".alert-success").alert('close');
+  });

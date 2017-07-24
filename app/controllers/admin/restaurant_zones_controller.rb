@@ -8,10 +8,10 @@ class Admin::RestaurantZonesController < ApplicationController
   def create
     @restaurant_zone = RestaurantZone.new(restaurant_zone_params)
     if @restaurant_zone.save
-      flash[:notice] = "New restaurant zone created with a restaurant #{@restaurant_zone.restaurant.name},
+      flash.now[:notice] = "New restaurant zone created with a restaurant #{@restaurant_zone.restaurant.name},
                       zone #{@restaurant_zone.zone.name}, and date of #{@restaurant_zone.delivery_date}" 
     else
-      flash[:alert] = @restaurant_zone.errors.full_messages.to_sentence
+      flash.now[:alert] = @restaurant_zone.errors.full_messages.to_sentence
     end
     get_restaurant_zones_for_partial(@restaurant_zone.delivery_date)
     respond_to do |format|
@@ -32,7 +32,7 @@ class Admin::RestaurantZonesController < ApplicationController
   def destroy
     @restaurant_zone = RestaurantZone.find(params[:id])
     @date = @restaurant_zone.delivery_date
-    flash[:alert] = "You have deleted restaurant zone #{@restaurant_zone.id} for date #{@restaurant_zone.delivery_date}"
+    flash.now[:alert] = "You have deleted restaurant zone #{@restaurant_zone.id} for date #{@restaurant_zone.delivery_date}"
     @restaurant_zone.destroy
     
     get_restaurant_zones_for_partial(@date)
