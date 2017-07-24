@@ -17,7 +17,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
-
+gem 'faker'
 
 gem 'pg'
 # Use Puma as the app server
@@ -53,7 +53,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'shoulda'
-  gem 'faker'
   gem 'pry'
 end
 
